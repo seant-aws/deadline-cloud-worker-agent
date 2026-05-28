@@ -5,6 +5,8 @@ from argparse import ArgumentParser, Namespace
 from pathlib import Path
 import os
 
+from .._runtime_kind import RuntimeKind
+
 
 class ParsedCommandLineArguments(Namespace):
     """Represents the parsed AWS Deadline Cloud Worker Agent command-line arguments"""
@@ -28,6 +30,7 @@ class ParsedCommandLineArguments(Namespace):
     host_metrics_logging_interval_seconds: float | None = None
     structured_logs: bool | None = None
     session_root_dir: Path | None = None
+    session_runtime: RuntimeKind | None = None
 
 
 def get_argument_parser() -> ArgumentParser:
@@ -168,5 +171,13 @@ def get_argument_parser() -> ArgumentParser:
         help="Path to the directory where session directories are created under.",
         default=None,
         type=Path,
+    )
+    parser.add_argument(
+        "--session-runtime",
+        help="The session runtime implementation to use.",
+        dest="session_runtime",
+        choices=[k.value for k in RuntimeKind],
+        type=RuntimeKind,
+        default=None,
     )
     return parser

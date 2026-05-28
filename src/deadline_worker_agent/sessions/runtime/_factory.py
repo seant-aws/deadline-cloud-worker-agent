@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ._abc import SessionRuntime
 from ._config import SessionRuntimeConfig
-from ._kind import RuntimeKind
+from ..._runtime_kind import RuntimeKind
 
 
 def create_session_runtime(kind: RuntimeKind, config: SessionRuntimeConfig) -> SessionRuntime:

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
         ActionStatus,
         EnvironmentIdentifier,
         EnvironmentModel,
+        PathMappingRule,
         StepScriptModel,
     )
 
@@ -102,16 +103,20 @@ class PythonSessionRuntime(SessionRuntime):
             log_task_banner=log_task_banner,
         )
 
+    def extend_path_mapping_rules(self, rules: list[PathMappingRule]) -> None:
+        if self._session._path_mapping_rules:
+            self._session._path_mapping_rules.extend(rules)
+        else:
+            self._session._path_mapping_rules = list(rules)
+        self._session._path_mapping_rules.sort(key=lambda rule: -len(rule.source_path.parts))
+
     def cancel_action(
         self,
         *,
         time_limit: Optional[timedelta] = None,
         mark_action_failed: bool = False,
     ) -> None:
-        self._session.cancel_action(
-            time_limit=time_limit,
-            mark_action_failed=mark_action_failed,
-        )
+        self._session.cancel_action(time_limit=time_limit, mark_action_failed=mark_action_failed)
 
     def cleanup(self) -> None:
         self._session.cleanup()

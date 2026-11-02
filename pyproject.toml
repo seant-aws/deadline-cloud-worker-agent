@@ -24,7 +24,7 @@ dependencies = [
     #   - it removes `extra_let_bindings` from the same three methods, which
     #     this package no longer passes. Code still passing it would raise
     #     TypeError against 0.12.0.
-    "openjd-sessions == 0.12.0",
+    "openjd-sessions == 0.14.0",
     # This package also depends on two openjd-model APIs directly:
     # StepTemplate.resolve_syntax_sugar() (run_step_task.py, for FEATURE_BUNDLE_1
     # simple-action steps) and openjd.expr.SerializedSymbolTable (the runtime
@@ -34,7 +34,7 @@ dependencies = [
     # longer includes step-scope `let`, which now travels exclusively through the
     # service-served resolvedSymbolTable. This package's tests have been adapted
     # to that contract.
-    "openjd-model >= 0.11.4, < 0.12",
+    "openjd-model >= 0.14, < 0.15",
     # tomli became tomllib in standard library in Python 3.11
     "tomli == 2.0.* ; python_version<'3.11'",
     "tomlkit >= 0.13,< 0.16",

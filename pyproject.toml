@@ -17,7 +17,7 @@ dependencies = [
     # Pinned to patch version due to Host Config Script runner usage of private OpenJD Sessions API.
     # 0.12.0 or newer is required for `resolved_symtab` on the v0 Session's
     # enter_environment, exit_environment and run_task; 0.14.0 requires openjd-model 0.14.
-    "openjd-sessions == 0.14.0",
+    "openjd-sessions == 0.15.0",
     # This package also depends on two openjd-model APIs directly:
     # StepTemplate.resolve_syntax_sugar() (run_step_task.py, for FEATURE_BUNDLE_1
     # simple-action steps) and openjd.expr.SerializedSymbolTable (the runtime
@@ -27,7 +27,7 @@ dependencies = [
     # longer includes step-scope `let`, which now travels exclusively through the
     # service-served resolvedSymbolTable. This package's tests have been adapted
     # to that contract.
-    "openjd-model >= 0.14, < 0.15",
+    "openjd-model >= 0.16, < 0.17",
     # tomli became tomllib in standard library in Python 3.11
     "tomli == 2.0.* ; python_version<'3.11'",
     "tomlkit >= 0.13,< 0.16",

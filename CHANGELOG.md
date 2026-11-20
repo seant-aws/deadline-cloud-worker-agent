@@ -1,3 +1,7 @@
+## 0.33.8 (2026-11-20)
+
+### Dependencies
+* bump openjd-model to 0.16 and openjd-sessions to 0.15.0 (#8) (`395b101`)
 ## 0.33.7 (2026-11-13)
 
 
